@@ -1,20 +1,103 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-image: linear-gradient(to bottom, #0081cf, #2e72af, #3b6390);
+    height: 100vh;
+}
+
+#page-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-title {
+    font-size: 4em;
+    color: #fff;
+    font-family: 'Cabin Sketch', cursive;
 }
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 960px;
-
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    height: 600px;
+    width: 600px;
+    border: 0.5em solid #3e4756;
+    border-radius: 0.3em;
+    background-color: #fff;
+    box-shadow: 0 0 0.5em #a1acbd;
 }
 
 .grid-item {
-    width: 60px;
-    height: 60px;
-    background-color: blue;
+    border: 1px solid #3e4756;
 }
 
-.grid-item:hover {
-    background-color: red;
+.hovered {
+    background-color: rgb(62, 71, 86);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    margin: 0.5em;
+    border: 2px solid #3e4756;
+    border-radius: 0.3em;
+    background-color: #fff;
+    color: #3e4756;
+    font-size: 1em;
+    cursor: pointer;
+    
+}
+
+.button:hover {
+    background-color: #3e4756;
+    color: #fff;
+}
+
+.tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    gap: 1em;
+    background-color: #fff;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    border: 3px solid #3e4756;
+}
+
+.tools > * {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        height: 300px;
+        width: 300px;
+    }
+
+    .grid-item {
+        border: 0.5px solid #3e4756;
+    }
+
+    .tools {
+        flex-direction: column;
+    }
 }
