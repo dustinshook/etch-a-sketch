@@ -16,12 +16,23 @@ function initGrid(squares) {
 
   const gridItems = document.querySelectorAll('.grid-item');
 
+  // mouseover event
   gridItems.forEach((item) => {
     item.addEventListener('mouseover', () => {
       item.dataset.opacity = Number(item.dataset.opacity) + Number(item.dataset.stroke);
       item.style.backgroundColor = `rgba(${hexToRgb(item.dataset.color)}, ${item.dataset.opacity})`;
     });
   });
+
+  // click to erase event
+  gridItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      item.dataset.opacity = 0;
+      item.style.backgroundColor = "#fff";
+    });
+  });
+
+
 }
 
 function hexToRgb(hex) {
@@ -49,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   resize.addEventListener('click', () => {
     let squares = prompt('How many squares per side?');
+    if (squares === null) squares = 16;
+    if (squares < 1) squares = 1;
+    if (squares > 100) squares = 100;
     initGrid(squares);
   });
 
@@ -56,9 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridItems = document.querySelectorAll('.grid-item');
     const color = document.getElementById('color-picker');
     const stroke = Number(document.getElementById('shading').value);
-
-    console.log(color.value);
-    console.log(stroke / 100);
 
     gridItems.forEach((item) => {
       item.dataset.color = color.value;
